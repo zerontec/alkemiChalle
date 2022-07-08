@@ -64,11 +64,20 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const {  } = sequelize.models;
+const {Ingresos, Egresos ,User, Saldo} = sequelize.models;
+
+User.hasMany(Ingresos)
+Ingresos.belongsTo(User)
+
+User.hasMany(Egresos)
+Egresos.belongsTo(User)
+
+User.hasMany(Saldo)
+Saldo.belongsTo(User)
 
 
 
-//User.hasMany(Shopping_cart, {as:"shopping_cart", foreignKey: 'user_id'});
+
 
 
 module.exports = {

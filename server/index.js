@@ -18,7 +18,7 @@
 //         \  \ `_.   \_ __\ /__ _/   .-` /  /
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
-// /-\||
+// /-\ |_ |´
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
@@ -28,7 +28,7 @@ const port = process.env.PORT || 5040;
 
 
   // Syncing all the models at once.
-  conn.sync({ force: false }).then(() => {
+  conn.sync({ force: true }).then(() => {
     server.listen(port, () => {
       console.log('o|O_O|o robot Σωκράτης listening at 5040');
       // eslint-disable-line no-console
