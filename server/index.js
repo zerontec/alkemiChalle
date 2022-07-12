@@ -22,7 +22,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-
+const {defaultAdminAndRoles } = require ('./src/preDowload/initialFunction.js');
 
 const port = process.env.PORT || 5040;
 
@@ -32,6 +32,7 @@ const port = process.env.PORT || 5040;
     server.listen(port, () => {
       console.log('o|O_O|o robot Σωκράτης listening at 5040');
       // eslint-disable-line no-console
+     defaultAdminAndRoles();
     
     });
    
