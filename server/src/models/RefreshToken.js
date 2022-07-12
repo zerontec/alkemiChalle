@@ -1,0 +1,38 @@
+const { DataTypes } = require('sequelize');
+const {JWT_REFRESH_EXPIRATION}= process.env
+const { v4: uuidv4 } = require("uuid");
+
+module.exports = (sequelize, Sequelize) => {
+    const RefreshToken = sequelize.define("refreshToken", {
+      token: {
+        type: DataTypes.STRING,
+      },
+      expiryDate: {
+        type: DataTypes.DATE,
+      },
+    });
+
+RefreshToken.createToken = async function (user) {
+    let expiredAt = new Date();
+
+    expiredAt.setSeconds(expiredAt.getSeconds() + JWT_REFRESH_EXPIRATION);
+
+    let _token = uuidv4();
+
+    let refreshToken = await this.create({
+     where:{ token: _token,
+      userId: user.id,
+      expiryDate: expiredAt.getTime(),
+     }
+    });
+
+    return refreshToken.token;
+  };
+
+  RefreshToken.verifyExpiration = (token) => {
+    return token.expiryDate.getTime() < new Date().getTime();
+  };
+
+  return RefreshToken;
+
+}
