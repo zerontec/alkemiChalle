@@ -64,7 +64,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const {Ingresos, Egresos ,User, Saldo} = sequelize.models;
+const {Ingresos, Egresos ,User, Saldo, Role, RefreshToken} = sequelize.models;
 
 User.hasMany(Ingresos)
 Ingresos.belongsTo(User)
@@ -75,7 +75,10 @@ Egresos.belongsTo(User)
 User.hasMany(Saldo)
 Saldo.belongsTo(User)
 
-
+User.belongsToMany(Role, {through: "user_Roles" });
+Role.belongsToMany(User, {through: "user_Roles" });
+RefreshToken.belongsTo(User,{ foreignKey: 'userId', targetKey: 'id'})
+User.hasOne(RefreshToken, {foreignKey: 'userId', targetKey: 'id'})
 
 
 

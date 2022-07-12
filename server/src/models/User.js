@@ -21,13 +21,13 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     accepTerms: { type: DataTypes.BOOLEAN },
-    role: { type: DataTypes.STRING, allowNull: false },
+   
     verificationToken: { type: DataTypes.STRING },
 
     verified: { type: DataTypes.DATE },
     resetToken: { type: DataTypes.STRING },
     resetTokenExpires: { type: DataTypes.DATE },
-    passwordReset: { type: DatatTypes.DATE },
+    passwordReset: { type: DataTypes.DATE },
 
     created: {
       type: DataTypes.DATE,
