@@ -58,7 +58,7 @@ async function getIngreso(req,res,next){
     }catch(err){
 
         res.status(500).json({message:'Error al obtener el ingreso'});
-        console.logg(err);
+        console.log(err);
 
     }
 
