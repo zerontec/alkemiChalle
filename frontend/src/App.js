@@ -1,11 +1,12 @@
 import React from 'react';
-import Navbar from './components/Navbar/Navbar';    
-import Footer from './components/Footer/Footer';
+
+
 import { Route, Routes , BrowserRouter} from 'react-router-dom';
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
-
+const Register = React.lazy(() => import ('./pages/Register/Register') );
+const Login = React.lazy(()=> import('./pages/Login/Login'));
 
 function App() {
 
@@ -14,15 +15,17 @@ function App() {
    
     <>
      <BrowserRouter>
-    <Navbar/>
+ 
     <Routes>
     <Route path="/" element=   { <React.Suspense fallback={<>...</>}><Home/></React.Suspense>  }/>
     <Route path='dashboard' element= {<React.Suspense fallback={<>...</>}><Dashboard/></React.Suspense> }/>
+    <Route path = 'register' element= {<React.Suspense fallback={<>...Cargando</>}><Register/></React.Suspense>}/>
+    <Route path = 'login' element= {<React.Suspense fallback={<>...Cargando</>}><Login/></React.Suspense>}/>
     </Routes>
 
    
 
-      <Footer/>
+      
       </BrowserRouter>
     </>
    
