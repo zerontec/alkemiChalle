@@ -1,8 +1,8 @@
 import React from 'react';
 
-
-
-
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
+import Slider from '../../components/slider/Slider';
 
 
 const Home=() => {
@@ -15,9 +15,19 @@ return(
 
 
 {/* Hero component send after to  single component */}
-
+<Navbar/>
+<section class="hero is-large is-info">
+  <div class="hero-body">
+    <p class="title">
+      Large hero
+    </p>
+    <p class="subtitle">
+      Large subtitle
+    </p>
+  </div>
+</section>
 <section className='section is-large'>
-    
+
 
 
 <div className="columns">
@@ -70,7 +80,7 @@ return(
 </section>
 
 
-
+<Footer/>
 
 
 </>
